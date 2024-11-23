@@ -1,12 +1,16 @@
 Running into an issue where PostCSS plugins used after Tailwind CSS v4.0-beta.2 do not work.
 
-For example, this should add `!important` to properties and resolve CSS variables (see `index.js`):
+For example, this should add `!important` to properties and resolve CSS variables:
 
 ```js
-return postcss([
+import postcss from "postcss";
+import tailwindcss from "@tailwindcss/postcss";
+import cssVariables from "postcss-css-variables";
+
+postcss([
     tailwindcss, 
     cssVariables,
-    addImportantPlugin,
+    addImportantPlugin, // see `index.js`
     ]).process(
         `
             @import "tailwindcss/theme";
