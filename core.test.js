@@ -6,7 +6,7 @@ const css = `
   @import "./postcss-test/node_modules/tailwindcss/utilities";
 `
 
-test.only('with postcss', () => {
+test('with postcss', () => {
   return withPostCss(css).then(result => {
     // should add !important but not resolve the CSS variable
     expect(result).toContain('.text-red-200 {\n  color: var(--color-red-200) !important;\n}')
@@ -14,10 +14,8 @@ test.only('with postcss', () => {
 })
 
 const html = `
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Test</title>
     <style>${css}</style>
   </head>
   <body>

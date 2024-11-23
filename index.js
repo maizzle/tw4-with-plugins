@@ -18,8 +18,9 @@ const addImportantPlugin = () => {
 
 export function withPostCss(css) {
   return postcss([
-    tailwindcss(), 
-    cssVariables()
+    tailwindcss, 
+    cssVariables,
+    addImportantPlugin,
   ]).process(css, {
     from: undefined,
   }).then(result => result.css);
