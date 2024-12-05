@@ -4,6 +4,9 @@ import { withPostCss, withPostHtml } from 'index.js'
 const css = `
   @import "./postcss-test/node_modules/tailwindcss/theme";
   @import "./postcss-test/node_modules/tailwindcss/utilities";
+  @theme {
+    --animate-*: initial;
+  }
 `
 
 test('with postcss', () => {
@@ -25,6 +28,8 @@ const html = `
 
 test('with posthtml', () => {
   return withPostHtml(html).then(result => {
+    console.log(result);
+    
     expect(result).toContain('.text-red-200 {\n  color: oklch(0.885 0.062 18.334) !important;\n}')
   })
 })

@@ -1,6 +1,7 @@
 import postcss from "postcss";
 import tailwindcss from "@tailwindcss/postcss";
 import cssVariables from "postcss-css-variables";
+// import postcssProperties from "postcss-custom-properties";
 
 import posthtml from "posthtml";
 import posthtmlPostcss from "posthtml-postcss";
@@ -20,7 +21,10 @@ export function withPostCss(css) {
   return postcss([
     tailwindcss, 
     cssVariables,
-    addImportantPlugin,
+    // postcssProperties({
+    //   preserve: false,
+    // }),
+    addImportantPlugin(),
   ]).process(css, {
     from: undefined,
   }).then(result => result.css);
@@ -36,7 +40,10 @@ export function withPostHtml(html) {
         }
       }),
       cssVariables,
-      addImportantPlugin,
+      // postcssProperties({
+      //   preserve: false,
+      // }),
+      addImportantPlugin(),
     ], { from: process.cwd() })
   ])
     .process(html)
