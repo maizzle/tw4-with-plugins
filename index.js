@@ -26,7 +26,7 @@ export function withPostCss(css) {
     // }),
     addImportantPlugin(),
   ]).process(css, {
-    from: undefined,
+    from: './node_modules/',
   }).then(result => result.css);
 }
 
@@ -44,7 +44,7 @@ export function withPostHtml(html) {
       //   preserve: false,
       // }),
       addImportantPlugin(),
-    ], { from: process.cwd() })
+    ], { from: './node_modules/' })
   ])
     .process(html)
     .then(result => result.html);

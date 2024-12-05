@@ -2,16 +2,18 @@ import { expect, test } from 'vitest'
 import { withPostCss, withPostHtml } from 'index.js'
 
 const css = `
-  @import "./postcss-test/node_modules/tailwindcss/theme";
-  @import "./postcss-test/node_modules/tailwindcss/utilities";
+  @import "tailwindcss/theme";
+  @import "tailwindcss/utilities";
   @theme {
     --animate-*: initial;
+
+    --color-red-200: #FED7D7;
   }
 `
 
 test('with postcss', () => {
   return withPostCss(css).then(result => {
-    expect(result).toContain('.text-red-200 {\n  color: oklch(0.885 0.062 18.334) !important;\n}')
+    expect(result).toContain('.text-red-200 {\n  color: #FED7D7 !important;\n}')
   })
 })
 
@@ -30,6 +32,6 @@ test('with posthtml', () => {
   return withPostHtml(html).then(result => {
     console.log(result);
     
-    expect(result).toContain('.text-red-200 {\n  color: oklch(0.885 0.062 18.334) !important;\n}')
+    expect(result).toContain('.text-red-200 {\n  color: #FED7D7 !important;\n}')
   })
 })
