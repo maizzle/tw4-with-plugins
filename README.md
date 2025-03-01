@@ -1,3 +1,7 @@
+**Note: this is now fixed as of Tailwind CSS 4.0.9**
+
+---
+
 Running into an issue where PostCSS plugins used after Tailwind CSS v4.0-beta.2 do not work.
 
 For example, this should add `!important` to properties and resolve CSS variables:
