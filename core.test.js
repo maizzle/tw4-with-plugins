@@ -6,7 +6,6 @@ const css = `
   @import "tailwindcss/utilities";
   @theme {
     --animate-*: initial;
-
     --color-red-200: #FED7D7;
   }
 `
@@ -30,8 +29,6 @@ const html = `
 
 test('with posthtml', () => {
   return withPostHtml(html).then(result => {
-    console.log(result);
-    
     expect(result).toContain('.text-red-200 {\n  color: #FED7D7 !important;\n}')
   })
 })
